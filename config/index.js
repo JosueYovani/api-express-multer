@@ -13,4 +13,11 @@ const AWS_S3 = {
   BUCKET_NAME: process.env.AWS_BUCKET_NAME,
 };
 
-export { API, AWS_S3 };
+const DB = {
+  HOST: process.env.DB_HOST,
+  USER: process.env.DB_USER,
+  PASSWORD: process.env.DB_PASS,
+  NAME: process.env.DB_NAME,
+};
+
+export { API, AWS_S3, DB };
