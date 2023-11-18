@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
+
 import upload from "./lib/uploadMulter.js";
+import usersRoutes from "./routes/users.js";
 
 const app = express();
 
@@ -18,5 +20,7 @@ app.post("/upload", upload.single("imagen"), async (req, res) => {
       .send({ ok: false, msg: error.message || "Unknown" });
   }
 });
+
+app.use("/users", usersRoutes);
 
 export default app;

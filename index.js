@@ -1,8 +1,8 @@
 import { API, DB } from "./config/index.js";
-import conn from "./src/lib/mySQL.js";
+import pool from "./src/lib/mySQL.js";
 import server from "./src/server.js";
 
-conn.connect((err) => {
+pool.getConnection((err, connection) => {
   if (err) {
     console.log(`Connection failed: ${err.message}`);
     process.exit(1);
@@ -13,7 +13,7 @@ conn.connect((err) => {
     });
 
     process.on("SIGINT", () => {
-      conn.end();
+      connection.release();
       process.exit();
     });
   }
